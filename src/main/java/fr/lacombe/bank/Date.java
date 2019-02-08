@@ -20,6 +20,11 @@ public class Date {
     }
 
     @Override
+    public String toString() {
+        return String.format("%2d/%2d/%4d", day, month, year);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
