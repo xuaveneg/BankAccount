@@ -1,9 +1,12 @@
 package fr.lacombe.bank;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
     private Amount amount;
     private final Date creationDate;
-    private Operation deposit;
+    private List<Operation> deposits = new ArrayList<>();
 
     public Account() {
         amount = Amount.amountOf(0);
@@ -16,7 +19,7 @@ public class Account {
 
     public void makeDeposit(Amount amount) {
         this.amount = this.amount.add(amount);
-        deposit = new Operation(amount);
+        deposits.add(new Operation(amount));
     }
 
     public void withdraw(Amount amount) {
@@ -24,9 +27,9 @@ public class Account {
     }
 
     public String operations() {
-        String operations = String.format("creation;%s;;0.00", creationDate);
-        if (deposit != null)
-            operations += deposit;
-        return operations;
+        StringBuilder operations = new StringBuilder(String.format("creation;%s;;0.00", creationDate));
+        for (Operation deposit : deposits)
+            operations.append(deposit);
+        return operations.toString();
     }
 }
