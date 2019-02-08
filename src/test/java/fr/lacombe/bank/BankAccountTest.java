@@ -2,15 +2,8 @@ package fr.lacombe.bank;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-import junitparams.converters.Param;
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.BDDMockito;
-import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.modules.junit4.PowerMockRunner;
-import org.powermock.tests.utils.impl.PowerMockIgnorePackagesExtractorImpl;
 
 import static fr.lacombe.bank.Amount.amountOf;
 import static org.assertj.core.api.Assertions.assertThat;
