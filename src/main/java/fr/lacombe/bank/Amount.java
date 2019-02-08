@@ -3,14 +3,14 @@ package fr.lacombe.bank;
 import java.util.Objects;
 
 public class Amount {
-    private final double v;
+    private final double value;
 
-    public Amount(double v) {
-        this.v = v;
+    private Amount(double value) {
+        this.value = value;
     }
 
-    public static Amount valueOf(double v) {
-        return new Amount(v);
+    public static Amount valueOf(double value) {
+        return new Amount(value);
     }
 
     @Override
@@ -18,11 +18,18 @@ public class Amount {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Amount amount = (Amount) o;
-        return Double.compare(amount.v, v) == 0;
+        return Double.compare(amount.value, value) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(v);
+        return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        return "Amount{" +
+                "value=" + value +
+                '}';
     }
 }
