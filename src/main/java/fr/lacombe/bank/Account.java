@@ -2,14 +2,16 @@ package fr.lacombe.bank;
 
 public class Account {
 
+    private Amount amount;
+
     public Account(Client client) {
     }
 
     public Amount getAmount() {
-        return Amount.valueOf(245.33);
+        return amount;
     }
 
     public void makeDeposit(Amount amount) {
-
+        this.amount = amount;
     }
 }
