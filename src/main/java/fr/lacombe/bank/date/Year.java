@@ -1,6 +1,4 @@
-package fr.lacombe.bank;
-
-import java.util.Objects;
+package fr.lacombe.bank.date;
 
 public class Year {
     private final int year;

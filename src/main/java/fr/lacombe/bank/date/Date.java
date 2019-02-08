@@ -1,4 +1,4 @@
-package fr.lacombe.bank;
+package fr.lacombe.bank.date;
 
 import java.util.Calendar;
 
@@ -11,7 +11,7 @@ public class Date {
         dateWithoutYear = new DateWithoutYear(month, day);
     }
 
-    static Date today() {
+    public static Date today() {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);

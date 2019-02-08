@@ -1,17 +1,20 @@
-package fr.lacombe.bank;
+package fr.lacombe.bank.operation;
 
-import static fr.lacombe.bank.Operation.Type.CREATION;
+import fr.lacombe.bank.Amount;
+import fr.lacombe.bank.date.Date;
+
+import static fr.lacombe.bank.operation.Operation.Type.CREATION;
 
 public class Operation {
     private final Type type;
     private final OperationState operationState;
 
-    Operation(Type type, Amount amount, Amount balance) {
+    public Operation(Type type, Amount amount, Amount balance) {
         this.type = type;
         operationState = new OperationState(Date.today(), new OperationBalanceWithAmount(amount, balance));
     }
 
-    Operation(Type type, Amount balance) {
+    public Operation(Type type, Amount balance) {
         this.type = type;
         operationState = new OperationState(Date.today(), new OperationBalance(balance));
     }
@@ -21,7 +24,7 @@ public class Operation {
         return String.format("%s;%s", type, operationState);
     }
 
-    boolean isCreation() {
+    public boolean isCreation() {
         return type == CREATION;
     }
 

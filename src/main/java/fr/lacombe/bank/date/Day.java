@@ -1,4 +1,4 @@
-package fr.lacombe.bank;
+package fr.lacombe.bank.date;
 
 public class Day {
     private final int day;

@@ -1,10 +1,10 @@
-package fr.lacombe.bank;
+package fr.lacombe.bank.date;
 
 import junitparams.Parameters;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-public class DateTest extends AbstractDateMockTest{
+public class DateTest extends AbstractDateMockTest {
 
     @Test
     @Parameters({"2018,12,25", "2019,2,8", "2020,6,29"})

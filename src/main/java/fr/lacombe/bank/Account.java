@@ -1,6 +1,9 @@
 package fr.lacombe.bank;
 
-import static fr.lacombe.bank.Operation.Type.*;
+import fr.lacombe.bank.operation.Operation;
+import fr.lacombe.bank.operation.Operations;
+
+import static fr.lacombe.bank.operation.Operation.Type.*;
 
 public class Account {
     private final Operations operations = new Operations();

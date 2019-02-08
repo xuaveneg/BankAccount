@@ -1,4 +1,4 @@
-package fr.lacombe.bank;
+package fr.lacombe.bank.date;
 
 import junitparams.JUnitParamsRunner;
 import org.junit.Before;
@@ -14,7 +14,7 @@ public abstract class AbstractDateMockTest {
     @Rule
     public PowerMockRule rule = new PowerMockRule();
 
-    void mockDateUtilToReturn(int year, int month, int day) {
+    protected void mockDateUtilToReturn(int year, int month, int day) {
         PowerMockito.when(Date.today()).thenReturn(new Date(year, month, day));
     }
 

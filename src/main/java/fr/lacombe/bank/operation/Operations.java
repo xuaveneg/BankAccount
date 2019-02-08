@@ -1,4 +1,4 @@
-package fr.lacombe.bank;
+package fr.lacombe.bank.operation;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 public class Operations implements Iterable<Operation> {
     private List<Operation> operations = new ArrayList<>();
 
-    void add(Operation operation) {
+    public void add(Operation operation) {
         operations.add(operation);
     }
 

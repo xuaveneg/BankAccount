@@ -1,4 +1,6 @@
-package fr.lacombe.bank;
+package fr.lacombe.bank.operation;
+
+import fr.lacombe.bank.Amount;
 
 public class OperationBalance {
     protected final Amount balance;

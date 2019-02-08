@@ -1,4 +1,4 @@
-package fr.lacombe.bank;
+package fr.lacombe.bank.date;
 
 public class DateWithoutYear {
     private final Month month;
