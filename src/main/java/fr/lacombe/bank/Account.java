@@ -17,6 +17,6 @@ public class Account {
     }
 
     public void withdraw(Amount amount) {
-        this.amount = Amount.amountOf(-245.33);
+        this.amount = amount.negativeValue();
     }
 }
