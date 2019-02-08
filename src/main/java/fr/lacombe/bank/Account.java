@@ -4,7 +4,8 @@ public class Account {
 
     private Amount amount;
 
-    public Account(Client client) {
+    public Account() {
+        amount = Amount.amountOf(0);
     }
 
     Amount getAmount() {
@@ -12,10 +13,6 @@ public class Account {
     }
 
     public void makeDeposit(Amount amount) {
-        if (this.amount != null) {
-            this.amount = this.amount.add(amount);
-        } else {
-            this.amount = amount;
-        }
+        this.amount = this.amount.add(amount);
     }
 }

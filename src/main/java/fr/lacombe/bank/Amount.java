@@ -9,8 +9,12 @@ public class Amount {
         this.value = value;
     }
 
-    public static Amount valueOf(double value) {
+    public static Amount amountOf(double value) {
         return new Amount(value);
+    }
+
+    Amount add(Amount amount) {
+        return Amount.amountOf(this.value + amount.value);
     }
 
     @Override
@@ -31,9 +35,5 @@ public class Amount {
         return "Amount{" +
                 "value=" + value +
                 '}';
-    }
-
-    public Amount add(Amount amount) {
-        return Amount.valueOf(this.value + amount.value);
     }
 }
