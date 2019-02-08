@@ -48,4 +48,10 @@ public class BankAccountTest {
         account.withdraw(amountOf(withdrewAmountValue));
         assertThat(account.getAmount()).isEqualTo(amountOf(expectedAmountValue));
     }
+
+    @Test
+    public void operations_should_give_account_creation() {
+        Account account = new Account();
+        assertThat(account.operations()).isEqualTo("creation;08/02/2018;;0.00");
+    }
 }
