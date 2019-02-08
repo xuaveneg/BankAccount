@@ -3,7 +3,7 @@ package fr.lacombe.bank;
 public class Account {
     private Amount amount;
     private final Date creationDate;
-    private Date depositDate;
+    private Operation deposit;
 
     public Account() {
         amount = Amount.amountOf(0);
@@ -16,7 +16,7 @@ public class Account {
 
     public void makeDeposit(Amount amount) {
         this.amount = this.amount.add(amount);
-        depositDate = Date.today();
+        deposit = new Operation();
     }
 
     public void withdraw(Amount amount) {
@@ -25,7 +25,7 @@ public class Account {
 
     public String operations() {
         String operations = String.format("creation;%s;;0.00", creationDate);
-        if (depositDate != null)
+        if (deposit != null)
             operations += "\ndeposit;30/01/2019;23.43;23.43";
         return operations;
     }
