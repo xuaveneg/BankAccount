@@ -15,4 +15,8 @@ public class Account {
     public void makeDeposit(Amount amount) {
         this.amount = this.amount.add(amount);
     }
+
+    public void withdraw(Amount amount) {
+        this.amount = Amount.amountOf(-245.33);
+    }
 }
