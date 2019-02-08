@@ -1,5 +1,6 @@
 package fr.lacombe.bank;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class Amount {
@@ -22,6 +23,11 @@ public class Amount {
     }
 
     @Override
+    public String toString() {
+        return String.format(Locale.US, "%.2f", value);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -32,13 +38,6 @@ public class Amount {
     @Override
     public int hashCode() {
         return Objects.hash(value);
-    }
-
-    @Override
-    public String toString() {
-        return "Amount{" +
-                "value=" + value +
-                '}';
     }
 
 }
