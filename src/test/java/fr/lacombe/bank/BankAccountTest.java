@@ -2,6 +2,7 @@ package fr.lacombe.bank;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import junitparams.converters.Param;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,10 +32,11 @@ public class BankAccountTest {
     }
 
     @Test
-    public void withdraw_on_empty_account_should_give_negative_amount_to_account() {
+    @Parameters({"245.33", "42.57", "56.34"})
+    public void withdraw_on_empty_account_should_give_negative_amount_to_account(double amountValue) {
         Account account = new Account();
-        Amount amount = amountOf(245.33);
+        Amount amount = amountOf(amountValue);
         account.withdraw(amount);
-        assertThat(account.getAmount()).isEqualTo(amountOf(-245.33));
+        assertThat(account.getAmount()).isEqualTo(amountOf(-amountValue));
     }
 }
