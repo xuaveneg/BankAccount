@@ -37,7 +37,7 @@ public class Amount {
                 '}';
     }
 
-    public Amount negativeValue() {
+    Amount negativeValue() {
         return amountOf(-value);
     }
 }
