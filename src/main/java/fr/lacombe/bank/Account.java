@@ -19,11 +19,12 @@ public class Account {
 
     public void makeDeposit(Amount amount) {
         this.amount = this.amount.add(amount);
-        deposits.add(new Operation(amount, this.amount));
+        deposits.add(new Operation("deposit", amount, this.amount));
     }
 
     public void withdraw(Amount amount) {
         this.amount = this.amount.add(amount.negativeValue());
+        deposits.add(new Operation("withdrawal", amount, this.amount));
     }
 
     public String operations() {
