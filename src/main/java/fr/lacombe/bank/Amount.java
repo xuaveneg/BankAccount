@@ -14,7 +14,7 @@ public class Amount {
     }
 
     Amount add(Amount amount) {
-        return Amount.amountOf(this.value + amount.value);
+        return Amount.amountOf(Math.round((this.value + amount.value) * 100d) / 100d);
     }
 
     @Override
@@ -40,4 +40,5 @@ public class Amount {
     Amount negativeValue() {
         return amountOf(-value);
     }
+
 }
