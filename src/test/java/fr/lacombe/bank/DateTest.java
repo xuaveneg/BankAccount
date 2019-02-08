@@ -35,4 +35,12 @@ public class DateTest {
         mockDateUtilToReturn(year, month, day);
         Assertions.assertThat(Date.today()).isEqualTo(new Date(year, month, day));
     }
+
+    @Test
+    @Parameters({"2018,12,25", "2019,2,8", "2020,6,29"})
+    public void to_string_should_print_date(int year, int month, int day) {
+        mockDateUtilToReturn(year, month, day);
+        String date = String.format("%2d/%2d/%4d", day, month, year);
+        Assertions.assertThat(Date.today().toString()).isEqualTo(date);
+    }
 }
