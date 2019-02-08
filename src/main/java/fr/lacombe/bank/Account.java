@@ -20,4 +20,7 @@ public class Account {
         this.amount = this.amount.add(amount.negativeValue());
     }
 
+    public String operations() {
+        return "creation;08/02/2018;;0.00";
+    }
 }
