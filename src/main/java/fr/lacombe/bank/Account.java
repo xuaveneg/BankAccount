@@ -7,7 +7,7 @@ public class Account {
     public Account(Client client) {
     }
 
-    public Amount getAmount() {
+    Amount getAmount() {
         return amount;
     }
 
