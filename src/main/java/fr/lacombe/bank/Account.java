@@ -1,40 +1,42 @@
 package fr.lacombe.bank;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static fr.lacombe.bank.Operation.Type.*;
 
 public class Account {
-    private Amount amount;
-    private List<Operation> operations = new ArrayList<>();
+    private final Operations operations = new Operations();
+    private Amount balance;
 
     public Account() {
-        amount = Amount.amountOf(0);
-        operations.add(new Operation(CREATION, amount));
+        balance = Amount.amountOf(0);
+        operations.add(new Operation(CREATION, balance));
     }
 
-    Amount getAmount() {
-        return amount;
+    boolean hasBalance(Amount balanceExpected) {
+        return balance.equals(balanceExpected);
     }
 
     public void makeDeposit(Amount amount) {
-        this.amount = this.amount.add(amount);
-        operations.add(new Operation(DEPOSIT, amount, this.amount));
+        balance = balance.add(amount);
+        operations.add(new Operation(DEPOSIT, amount, balance));
     }
 
     public void withdraw(Amount amount) {
-        this.amount = this.amount.add(amount.negativeValue());
-        operations.add(new Operation(WITHDRAWAL, amount, this.amount));
+        Amount negativeAmount = amount.negativeAmount();
+        balance = balance.add(negativeAmount);
+        operations.add(new Operation(WITHDRAWAL, amount, balance));
     }
 
     public String operations() {
-        StringBuilder operations = new StringBuilder();
-        for (Operation deposit : this.operations) {
-            if (!deposit.isCreation())
-                operations.append('\n');
-            operations.append(deposit);
+        StringBuilder statement = new StringBuilder();
+        for (Operation deposit : operations) {
+            appendOperationInStatement(statement, deposit);
         }
-        return operations.toString();
+        return statement.toString();
+    }
+
+    private void appendOperationInStatement(StringBuilder statement, Operation deposit) {
+        if (!deposit.isCreation())
+            statement.append('\n');
+        statement.append(deposit);
     }
 }

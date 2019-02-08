@@ -3,11 +3,13 @@ package fr.lacombe.bank;
 import java.util.Locale;
 import java.util.Objects;
 
+import static java.lang.Double.compare;
+
 public class Amount {
     private final double value;
 
     private Amount(double value) {
-        this.value = value;
+        this.value = roundValue(value);
     }
 
     public static Amount amountOf(double value) {
@@ -15,10 +17,15 @@ public class Amount {
     }
 
     Amount add(Amount amount) {
-        return Amount.amountOf(Math.round((this.value + amount.value) * 100d) / 100d);
+        double roundedValue = roundValue(amount.value + value);
+        return Amount.amountOf(roundedValue);
     }
 
-    Amount negativeValue() {
+    private double roundValue(double value) {
+        return Math.round(value * 100d) / 100d;
+    }
+
+    Amount negativeAmount() {
         return amountOf(-value);
     }
 
@@ -32,12 +39,11 @@ public class Amount {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Amount amount = (Amount) o;
-        return Double.compare(amount.value, value) == 0;
+        return compare(amount.value, value) == 0;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(value);
     }
-
 }

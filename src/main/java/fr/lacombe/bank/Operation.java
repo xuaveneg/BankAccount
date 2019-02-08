@@ -4,27 +4,21 @@ import static fr.lacombe.bank.Operation.Type.CREATION;
 
 public class Operation {
     private final Type type;
-    private final Date date;
-    private final Amount amount;
-    private final Amount balance;
+    private final OperationState operationState;
 
     Operation(Type type, Amount amount, Amount balance) {
         this.type = type;
-        this.amount = amount;
-        this.balance = balance;
-        date = Date.today();
+        operationState = new OperationState(Date.today(), new OperationBalanceWithAmount(amount, balance));
     }
 
     Operation(Type type, Amount balance) {
         this.type = type;
-        this.amount = null;
-        this.balance = balance;
-        date = Date.today();
+        operationState = new OperationState(Date.today(), new OperationBalance(balance));
     }
 
     @Override
     public String toString() {
-        return String.format("%s;%s;%s;%s", type, date, amount == null ? "" : amount, balance);
+        return String.format("%s;%s", type, operationState);
     }
 
     boolean isCreation() {
@@ -37,7 +31,8 @@ public class Operation {
 
         @Override
         public String toString() {
-            return this.name().toLowerCase();
+            String name = this.name();
+            return name.toLowerCase();
         }
     }
 }

@@ -17,7 +17,7 @@ public class BankAccountTest {
         Account account = new Account();
         Amount amount = amountOf(amountValue);
         account.makeDeposit(amount);
-        assertThat(account.getAmount()).isEqualTo(amount);
+        assertThat(account.hasBalance(amount)).isTrue();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class BankAccountTest {
         Account account = new Account();
         account.makeDeposit(amountOf(25.43));
         account.makeDeposit(amountOf(addedAmountValue));
-        assertThat(account.getAmount()).isEqualTo(amountOf(expectedAmountValue));
+        assertThat(account.hasBalance(amountOf(expectedAmountValue))).isTrue();
     }
 
     @Test
@@ -35,7 +35,7 @@ public class BankAccountTest {
         Account account = new Account();
         Amount amount = amountOf(amountValue);
         account.withdraw(amount);
-        assertThat(account.getAmount()).isEqualTo(amountOf(-amountValue));
+        assertThat(account.hasBalance(amountOf(-amountValue))).isTrue();
     }
 
     @Test
@@ -44,6 +44,6 @@ public class BankAccountTest {
         Account account = new Account();
         account.makeDeposit(amountOf(132.51));
         account.withdraw(amountOf(withdrewAmountValue));
-        assertThat(account.getAmount()).isEqualTo(amountOf(expectedAmountValue));
+        assertThat(account.hasBalance(amountOf(expectedAmountValue))).isTrue();
     }
 }
