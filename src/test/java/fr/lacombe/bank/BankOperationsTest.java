@@ -67,4 +67,35 @@ public class BankOperationsTest extends AbstractDateMockTest {
                 "deposit;30/01/2019;444.55;444.55\n" +
                 "withdrawal;13/04/2020;23.45;421.10");
     }
+
+    @Test
+    public void multiple_operations_should_print_correctly() {
+        mockDateUtilToReturn(2018,6,29);
+        Account account = new Account();
+        mockDateUtilToReturn(2018, 9, 3);
+        account.makeDeposit(amountOf(12.23));
+        mockDateUtilToReturn(2018, 11, 13);
+        account.makeDeposit(amountOf(1.00));
+        mockDateUtilToReturn(2019, 1, 30);
+        account.makeDeposit(amountOf(444.55));
+        mockDateUtilToReturn(2019, 4, 1);
+        account.withdraw(amountOf(23.45));
+        mockDateUtilToReturn(2019, 8, 24);
+        account.withdraw(amountOf(0.00));
+        mockDateUtilToReturn(2020, 12, 25);
+        account.makeDeposit(amountOf(42.42));
+        mockDateUtilToReturn(2021, 7, 14);
+        account.makeDeposit(amountOf(29.06));
+        mockDateUtilToReturn(2022, 10, 17);
+        account.withdraw(amountOf(123.45));
+        assertThat(account.operations()).isEqualTo("creation;29/06/2018;;0.00\n" +
+                "deposit;03/09/2018;12.23;12.23\n" +
+                "deposit;13/11/2018;1.00;13.23\n" +
+                "deposit;30/01/2019;444.55;457.78\n" +
+                "withdrawal;01/04/2019;23.45;434.33\n" +
+                "withdrawal;24/08/2019;0.00;434.33\n" +
+                "deposit;25/12/2020;42.42;476.75\n" +
+                "deposit;14/07/2021;29.06;505.81\n" +
+                "withdrawal;17/10/2022;123.45;382.36");
+    }
 }
