@@ -15,7 +15,7 @@ public class Operation {
         date = Date.today();
     }
 
-    public Operation(Type type, Amount balance) {
+    Operation(Type type, Amount balance) {
         this.type = type;
         this.amount = null;
         this.balance = balance;
@@ -27,7 +27,7 @@ public class Operation {
         return String.format("%s;%s;%s;%s", type, date, amount == null ? "" : amount, balance);
     }
 
-    public boolean isCreation() {
+    boolean isCreation() {
         return type == CREATION;
     }
 

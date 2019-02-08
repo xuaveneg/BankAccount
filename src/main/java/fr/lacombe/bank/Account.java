@@ -7,13 +7,11 @@ import static fr.lacombe.bank.Operation.Type.*;
 
 public class Account {
     private Amount amount;
-    private final Date creationDate;
-    private List<Operation> deposits = new ArrayList<>();
+    private List<Operation> operations = new ArrayList<>();
 
     public Account() {
         amount = Amount.amountOf(0);
-        creationDate = Date.today();
-        deposits.add(new Operation(CREATION, amount));
+        operations.add(new Operation(CREATION, amount));
     }
 
     Amount getAmount() {
@@ -22,17 +20,17 @@ public class Account {
 
     public void makeDeposit(Amount amount) {
         this.amount = this.amount.add(amount);
-        deposits.add(new Operation(DEPOSIT, amount, this.amount));
+        operations.add(new Operation(DEPOSIT, amount, this.amount));
     }
 
     public void withdraw(Amount amount) {
         this.amount = this.amount.add(amount.negativeValue());
-        deposits.add(new Operation(WITHDRAWAL, amount, this.amount));
+        operations.add(new Operation(WITHDRAWAL, amount, this.amount));
     }
 
     public String operations() {
         StringBuilder operations = new StringBuilder();
-        for (Operation deposit : deposits) {
+        for (Operation deposit : this.operations) {
             if (!deposit.isCreation())
                 operations.append('\n');
             operations.append(deposit);
