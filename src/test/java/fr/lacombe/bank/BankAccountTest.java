@@ -21,13 +21,14 @@ public class BankAccountTest {
     }
 
     @Test
-    public void make_deposit_should_increase_account_amount() {
+    @Parameters({"53.54,78.97", "25.43,50.86", "87.66,113.09"})
+    public void make_deposit_should_increase_account_amount(double addedAmountValue, double expectedAmountValue) {
         Client client = new Client();
         Account account = new Account(client);
         Amount initialAmount = Amount.valueOf(25.43);
         account.makeDeposit(initialAmount);
-        account.makeDeposit(Amount.valueOf(53.54));
-        Assertions.assertThat(account.getAmount()).isEqualTo(Amount.valueOf(78.97));
+        account.makeDeposit(Amount.valueOf(addedAmountValue));
+        Assertions.assertThat(account.getAmount()).isEqualTo(Amount.valueOf(expectedAmountValue));
     }
 
 }
