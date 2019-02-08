@@ -14,7 +14,7 @@ public abstract class AbstractDateMockTest {
     @Rule
     public PowerMockRule rule = new PowerMockRule();
 
-    protected void mockDateUtilToReturn(int year, int month, int day) {
+    void mockDateUtilToReturn(int year, int month, int day) {
         PowerMockito.when(Date.today()).thenReturn(new Date(year, month, day));
     }
 
