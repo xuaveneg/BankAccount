@@ -39,4 +39,12 @@ public class BankAccountTest {
         account.withdraw(amount);
         assertThat(account.getAmount()).isEqualTo(amountOf(-amountValue));
     }
+
+    @Test
+    public void withdraw_should_decrease_account_amount() {
+        Account account = new Account();
+        account.makeDeposit(amountOf(132.51));
+        account.withdraw(amountOf(53.54));
+        assertThat(account.getAmount()).isEqualTo(amountOf(78.97));
+    }
 }
