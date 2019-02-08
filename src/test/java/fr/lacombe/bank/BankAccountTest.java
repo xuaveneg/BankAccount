@@ -30,4 +30,11 @@ public class BankAccountTest {
         assertThat(account.getAmount()).isEqualTo(amountOf(expectedAmountValue));
     }
 
+    @Test
+    public void withdraw_on_empty_account_should_give_negative_amount_to_account() {
+        Account account = new Account();
+        Amount amount = amountOf(245.33);
+        account.withdraw(amount);
+        assertThat(account.getAmount()).isEqualTo(amountOf(-245.33));
+    }
 }
