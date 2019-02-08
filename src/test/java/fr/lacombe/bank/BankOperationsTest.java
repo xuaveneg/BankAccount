@@ -3,6 +3,8 @@ package fr.lacombe.bank;
 import junitparams.Parameters;
 import org.junit.Test;
 
+import java.util.Locale;
+
 import static fr.lacombe.bank.Amount.amountOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,12 +31,14 @@ public class BankOperationsTest extends AbstractDateMockTest {
     }
 
     @Test
-    public void operations_should_give_deposit_with_correct_amount() {
+    @Parameters({"23.43", "345.88", "4145.27"})
+    public void operations_should_give_deposit_with_correct_amount(double amount) {
         mockDateUtilToReturn(2018,12,25);
         Account account = new Account();
         mockDateUtilToReturn(2019, 1, 30);
-        account.makeDeposit(amountOf(23.43));
+        account.makeDeposit(amountOf(amount));
         assertThat(account.operations()).isEqualTo("creation;25/12/2018;;0.00\n" +
-                "deposit;30/01/2019;23.43;23.43");
+                String.format(Locale.US,
+                        "deposit;30/01/2019;%.2f;%.2f", amount, amount));
     }
 }
