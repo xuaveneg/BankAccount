@@ -26,7 +26,7 @@ public class Account {
     public String operations() {
         String operations = String.format("creation;%s;;0.00", creationDate);
         if (deposit != null)
-            operations += "\ndeposit;30/01/2019;23.43;23.43";
+            operations += deposit;
         return operations;
     }
 }
