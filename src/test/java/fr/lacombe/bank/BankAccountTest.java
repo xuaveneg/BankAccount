@@ -41,10 +41,11 @@ public class BankAccountTest {
     }
 
     @Test
-    public void withdraw_should_decrease_account_amount() {
+    @Parameters({"53.54,78.97", "25.43,107.08", "87.66,44.85"})
+    public void withdraw_should_decrease_account_amount(double withdrewAmountValue, double expectedAmountValue) {
         Account account = new Account();
         account.makeDeposit(amountOf(132.51));
-        account.withdraw(amountOf(53.54));
-        assertThat(account.getAmount()).isEqualTo(amountOf(78.97));
+        account.withdraw(amountOf(withdrewAmountValue));
+        assertThat(account.getAmount()).isEqualTo(amountOf(expectedAmountValue));
     }
 }
