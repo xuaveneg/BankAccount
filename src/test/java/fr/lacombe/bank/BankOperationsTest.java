@@ -54,4 +54,17 @@ public class BankOperationsTest extends AbstractDateMockTest {
                 "deposit;30/01/2019;23.45;23.45\n" +
                 "deposit;13/04/2020;444.55;468.00");
     }
+
+    @Test
+    public void operations_with_withdrawal_should_print_correctly() {
+        mockDateUtilToReturn(2018,12,25);
+        Account account = new Account();
+        mockDateUtilToReturn(2019, 1, 30);
+        account.makeDeposit(amountOf(444.55));
+        mockDateUtilToReturn(2020, 4, 13);
+        account.withdraw(amountOf(23.45));
+        assertThat(account.operations()).isEqualTo("creation;25/12/2018;;0.00\n" +
+                "deposit;30/01/2019;444.55;444.55\n" +
+                "withdrawal;13/04/2020;23.45;421.10");
+    }
 }
