@@ -18,12 +18,13 @@ public class BankOperationsTest extends AbstractDateMockTest {
     }
 
     @Test
-    public void operations_should_give_deposit() {
+    @Parameters({"2019,1,30", "2019,2,8", "2020,6,29"})
+    public void operations_should_give_deposit_with_correct_date(int year, int month, int day) {
         mockDateUtilToReturn(2018,12,25);
         Account account = new Account();
-        mockDateUtilToReturn(2019, 1, 30);
+        mockDateUtilToReturn(year, month, day);
         account.makeDeposit(amountOf(23.43));
         assertThat(account.operations()).isEqualTo("creation;25/12/2018;;0.00\n" +
-                "deposit;30/01/2019;23.43;23.43");
+                String.format("deposit;%02d/%02d/%02d;23.43;23.43", day, month, year));
     }
 }
