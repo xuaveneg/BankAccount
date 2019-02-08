@@ -52,6 +52,6 @@ public class BankOperationsTest extends AbstractDateMockTest {
         account.makeDeposit(amountOf(444.55));
         assertThat(account.operations()).isEqualTo("creation;25/12/2018;;0.00\n" +
                 "deposit;30/01/2019;23.45;23.45\n" +
-                "deposit;13/04/2020;444.55;444.55");
+                "deposit;13/04/2020;444.55;468.00");
     }
 }

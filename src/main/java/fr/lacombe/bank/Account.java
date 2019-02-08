@@ -19,7 +19,7 @@ public class Account {
 
     public void makeDeposit(Amount amount) {
         this.amount = this.amount.add(amount);
-        deposits.add(new Operation(amount));
+        deposits.add(new Operation(amount, this.amount));
     }
 
     public void withdraw(Amount amount) {
