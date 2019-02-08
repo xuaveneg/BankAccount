@@ -41,4 +41,17 @@ public class BankOperationsTest extends AbstractDateMockTest {
                 String.format(Locale.US,
                         "deposit;30/01/2019;%.2f;%.2f", amount, amount));
     }
+
+    @Test
+    public void operations_with_multiple_deposits_should_print_correctly() {
+        mockDateUtilToReturn(2018,12,25);
+        Account account = new Account();
+        mockDateUtilToReturn(2019, 1, 30);
+        account.makeDeposit(amountOf(23.45));
+        mockDateUtilToReturn(2020, 4, 13);
+        account.makeDeposit(amountOf(444.55));
+        assertThat(account.operations()).isEqualTo("creation;25/12/2018;;0.00\n" +
+                "deposit;30/01/2019;23.45;23.45\n" +
+                "deposit;13/04/2020;444.55;444.55");
+    }
 }
