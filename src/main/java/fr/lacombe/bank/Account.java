@@ -13,7 +13,7 @@ public class Account {
 
     public void makeDeposit(Amount amount) {
         if (this.amount != null) {
-            this.amount = Amount.valueOf(78.97);
+            this.amount = this.amount.add(amount);
         } else {
             this.amount = amount;
         }

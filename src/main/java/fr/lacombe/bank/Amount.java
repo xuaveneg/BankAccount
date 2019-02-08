@@ -32,4 +32,8 @@ public class Amount {
                 "value=" + value +
                 '}';
     }
+
+    public Amount add(Amount amount) {
+        return Amount.valueOf(this.value + amount.value);
+    }
 }
