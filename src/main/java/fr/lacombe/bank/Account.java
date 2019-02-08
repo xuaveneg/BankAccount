@@ -1,7 +1,6 @@
 package fr.lacombe.bank;
 
 public class Account {
-
     private Amount amount;
     private final Date creationDate;
 

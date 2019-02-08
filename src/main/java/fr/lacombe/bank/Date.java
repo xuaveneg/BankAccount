@@ -16,12 +16,15 @@ public class Date {
 
     public static Date today() {
         Calendar calendar = Calendar.getInstance();
-        return new Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DATE);
+        return new Date(year, month, day);
     }
 
     @Override
     public String toString() {
-        return String.format("%2d/%2d/%4d", day, month, year);
+        return String.format("%02d/%02d/%04d", day, month, year);
     }
 
     @Override

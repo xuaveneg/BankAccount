@@ -17,6 +17,10 @@ public class Amount {
         return Amount.amountOf(Math.round((this.value + amount.value) * 100d) / 100d);
     }
 
+    Amount negativeValue() {
+        return amountOf(-value);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -35,10 +39,6 @@ public class Amount {
         return "Amount{" +
                 "value=" + value +
                 '}';
-    }
-
-    Amount negativeValue() {
-        return amountOf(-value);
     }
 
 }
