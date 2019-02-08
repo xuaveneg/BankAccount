@@ -3,9 +3,11 @@ package fr.lacombe.bank;
 public class Account {
 
     private Amount amount;
+    private final Date creationDate;
 
     public Account() {
         amount = Amount.amountOf(0);
+        creationDate = Date.today();
     }
 
     Amount getAmount() {
@@ -21,6 +23,6 @@ public class Account {
     }
 
     public String operations() {
-        return "creation;08/02/2019;;0.00";
+        return String.format("creation;%s;;0.00", creationDate);
     }
 }
