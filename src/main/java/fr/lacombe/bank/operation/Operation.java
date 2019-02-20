@@ -2,7 +2,6 @@ package fr.lacombe.bank.operation;
 
 import fr.lacombe.bank.Amount;
 import fr.lacombe.bank.date.Date;
-import fr.lacombe.bank.date.DateGeneratorImpl;
 
 import static fr.lacombe.bank.operation.Operation.Type.CREATION;
 

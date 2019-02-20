@@ -12,7 +12,7 @@ public class Amount {
         this.value = roundValue(value);
     }
 
-    public static Amount amountOf(double value) {
+    static Amount amountOf(double value) {
         return new Amount(value);
     }
 
