@@ -2,6 +2,7 @@ package fr.lacombe.bank.operation;
 
 import fr.lacombe.bank.Amount;
 import fr.lacombe.bank.date.Date;
+import fr.lacombe.bank.date.DateGeneratorImpl;
 
 import static fr.lacombe.bank.operation.Operation.Type.CREATION;
 
@@ -9,14 +10,14 @@ public class Operation {
     private final Type type;
     private final OperationState operationState;
 
-    public Operation(Type type, Amount amount, Amount balance) {
+    public Operation(Type type, Amount amount, Amount balance, Date today) {
         this.type = type;
-        operationState = new OperationState(Date.today(), new OperationBalanceWithAmount(amount, balance));
+        operationState = new OperationState(today, new OperationBalanceWithAmount(amount, balance));
     }
 
-    public Operation(Type type, Amount balance) {
+    public Operation(Type type, Amount balance, Date today) {
         this.type = type;
-        operationState = new OperationState(Date.today(), new OperationBalance(balance));
+        operationState = new OperationState(today, new OperationBalance(balance));
     }
 
     @Override
